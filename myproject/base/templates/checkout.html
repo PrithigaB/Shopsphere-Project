@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="cart-container">
+    <h2 class="cart-title">Checkout</h2>
+
+    <div class="cart-box">
+        <table class="cart-table">
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+
+            {% for item in cartproducts %}
+            <tr>
+                <td>{{ item.pname }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>₹{{ item.totalprice }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="cart-summary">
+        <h3>Total Payable: <span>₹{{ total }}</span></h3>
+
+        <a href="#" class="checkout-btn">Place Order</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<center>
+    <h1>Profile Page</h1>
+</center>
+
+<center>
+<div class="profile-box">
+    <h2>Welcome {{ user.username }}</h2>
+    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+
+    <a href="{% url 'update_profile' %}">Update Profile</a>
+    <a href="{% url 'update_password' %}">Change Password</a>
+    <a href="{% url 'logout_' %}">Logout</a>
+</div>
+</center>
+{% endblock %}
+
+
+

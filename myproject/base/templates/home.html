@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1 class="page-title">Products</h1>
+
+<!-- Category Filter -->
+<div class="category-bar">
+  {% for i in category %}
+    <a href="?cat={{ i }}" class="category-btn">{{ i }}</a>
+  {% endfor %}
+  <a href="{% url 'home' %}" class="category-btn all">All</a>
+</div>
+
+{% if nomatch %}
+  <h2 class="no-products">No products found 😔</h2>
+{% endif %}
+
+<!-- Product Grid -->
+<div class="product-grid">
+  {% for i in all_products %}
+    <div class="product-card">
+      <img src="{{ i.pimages.url }}" alt="{{ i.pname }}">
+
+      <h3>{{ i.pname }}</h3>
+      <p>{{ i.pdesc }}</p>
+      <p class="price">₹{{ i.price }}</p>
+
+      {% if i.trending %}
+        <span class="badge trending">🔥 Trending</span>
+      {% endif %}
+
+      {% if i.offer %}
+        <span class="badge offer">50% OFF</span>
+      {% endif %}
+
+      <a href="{% url 'addtocart' i.id %}" class="btn">Add to Cart</a>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
